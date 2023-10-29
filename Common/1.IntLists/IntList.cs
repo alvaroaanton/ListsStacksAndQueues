@@ -40,15 +40,12 @@ namespace Common
         {
             //TODO #1: add a new integer to the end of the list
             IntListNode node = First;
-            if(node != null)
-            {
-                while (node.Next != null)
+                while (node != null)
                 {
                     node = node.Next;
 
                 }
-                node.Next.Value = value;
-            }
+                node.Value = value;
         }
 
         private IntListNode GetNode(int index)

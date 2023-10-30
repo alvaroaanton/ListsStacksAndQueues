@@ -30,7 +30,7 @@ namespace Common
             int i=0;
             while(i< Count())
             {
-                i++
+                i++;
             }
             Values[i] = value;
         }
@@ -82,7 +82,7 @@ namespace Common
             //TODO #6: remove all the elements on the list
             for (int i = 0; i < Count(); i++)
             {
-                    Values[i] = null;
+                    Values[i] = 0;
             }
         }
     }

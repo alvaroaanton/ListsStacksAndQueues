@@ -1,7 +1,7 @@
 using System;
 namespace Common
 {
-    public class public class GenericArrayList<T> : IGenericList<T>
+    public class GenericArrayList<T> : IGenericList<T>
     {
         T[] Values;
         int NumElements = 0;
@@ -30,7 +30,7 @@ namespace Common
             int i = 0;
             while (i < Count())
             {
-                i++
+                i++;
             }
             Values[i] = value;
         }
@@ -69,7 +69,7 @@ namespace Common
                     Values[i] = Values[i + 1];
                 }
             }
-            Values[Count() - 1] = 0;
+            return;
         }
 
         public void Clear()
@@ -77,7 +77,7 @@ namespace Common
             //TODO #6: remove all the elements on the list
             for (int i = 0; i < Count(); i++)
             {
-                Values[i] = null;
+                Values[i] = default (T);
             }
         }
     }

@@ -110,7 +110,7 @@ public class GenericList<T> : IGenericList<T>
         {
             if (index == currentPos)
             {
-                GetNode(index - 1).Next = GetNode(index + 1);
+                FindNode(index - 1).Next = FindNode(index + 1);
             }
             currentPos++;
             node = node.Next;

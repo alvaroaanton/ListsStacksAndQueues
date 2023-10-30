@@ -5,7 +5,7 @@ namespace Common
     public class IntArrayList : IList
     {
         int[] Values;
-        int NumElements = 0;
+        private int NumElements;
 
         public IntArrayList(int n)
         {

@@ -17,7 +17,7 @@ namespace Common
     public class IntList : IList
     {
         IntListNode First = null;
-
+        private int numElementos;
         //This method returns all the elements on the list as a string
         //Use it as an example on how to access all the elements on the list
         public string AsString()
@@ -92,7 +92,7 @@ namespace Common
         public int Count()
         {
             //TODO #4: return the number of elements on the list
-            int numElementos = 0;
+            numElementos = 0;
             IntListNode node = First;
 
             while (node != null)

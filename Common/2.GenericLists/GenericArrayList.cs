@@ -4,7 +4,7 @@ namespace Common
     public class GenericArrayList<T> : IGenericList<T>
     {
         T[] Values;
-        int NumElements = 0;
+        private int NumElements;
 
         public GenericArrayList(int n)
         {

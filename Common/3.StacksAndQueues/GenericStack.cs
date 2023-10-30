@@ -6,8 +6,8 @@ namespace Common
     public class GenericStack<T> : IPushPop<T>
     {
         //TODO #1: Declare a List inside this object class to store the objects. Choose the most appropriate object class
-        GenericList<int> list= new GenericList<int>();
-        GenericListNode<int> First = null;
+        GenericList<T> list= new GenericList<T>();
+        GenericListNode<T> First = null;
         private int numElementos;
         
         public string AsString()
@@ -18,7 +18,7 @@ namespace Common
 
             while (node != null)
             {
-                output += node.ToString() + ",";
+                output += node.Value.ToString() + ",";
                 node = node.Next;
             }
             output = output.TrimEnd(',') + "] " + Count() + " elements";
@@ -44,7 +44,7 @@ namespace Common
         public void Clear()
         {
             GenericListNode<T> node = First;
-
+            
             if (node != null)
             {
                 node.Next = null;
@@ -54,15 +54,20 @@ namespace Common
         public void Push(T value)
         {
             //TODO #5: Add a new object to the list (at the end of it)
-            GenericListNode<T> node = First;
-            if (node != null)
+            GenericListNode<T> newNode = new GenericListNode<T>(value);
+
+            if (First == null)
             {
+                First = newNode;
+            }
+            else
+            {
+                GenericListNode<T> node = First;
                 while (node.Next != null)
                 {
                     node = node.Next;
-
                 }
-                node.Next.Value = value;
+                node.Next = newNode;
             }
         }
 
@@ -72,9 +77,15 @@ namespace Common
             GenericListNode<T> node = First;
             if (First != null)
             {
+                T value = First.Value;
                 First = First.Next;
+                return value;
             }
-            return First;
+            else
+            {
+                return default(T);
+            }
+            
         }
     }
 }

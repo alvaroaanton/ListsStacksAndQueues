@@ -18,7 +18,7 @@ namespace Common
 
             while (node != null)
             {
-                output += node.Value.ToString() + ",";
+                output += node.ToString() + ",";
                 node = node.Next;
             }
             output = output.TrimEnd(',') + "] " + Count() + " elements";
@@ -54,20 +54,16 @@ namespace Common
         public void Push(T value)
         {
             //TODO #5: Add a new object to the list (at the end of it)
-            GenericListNode<T> newNode = new GenericListNode<T>(value);
 
-            if (First == null)
+            GenericListNode<T> node = First;
+            if (node != null)
             {
-                First = newNode;
-            }
-            else
-            {
-                GenericListNode<T> node = First;
                 while (node.Next != null)
                 {
                     node = node.Next;
+
                 }
-                node.Next = newNode;
+                node.Next.Value = value;
             }
         }
 

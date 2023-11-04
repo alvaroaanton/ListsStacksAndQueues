@@ -4,7 +4,7 @@ namespace Common
     public class GenericArrayList<T> : IGenericList<T>
     {
         T[] Values;
-        private int NumElements;
+        int NumElements=0;
 
         public GenericArrayList(int n)
         {
@@ -27,58 +27,49 @@ namespace Common
         public void Add(T value)
         {
             //TODO #2: add a new element to the end of the list
-            int i = 0;
-            while (i < Count())
+            if (NumElements < Values.Length)
             {
-                i++;
+                Values[NumElements] = value;
+                NumElements++;
             }
-            Values[i] = value;
         }
 
         public T Get(int index)
         {
             //TODO #3: return the element on the index-th position. YOU MUST USE GetNode(int). Return the default value for object class T if the position is out of bounds
-            for (int i = 0; i < Count(); i++)
+            if (index >= 0 && index < Values.Length)
             {
-                if (i == index)
-                {
-                    return Values[i];
-                }
+                return Values[index];
             }
-            return default(T);
+            else
+            {
+                return default(T);
+            }
         }
 
         public int Count()
         {
             //TODO #4: return the number of elements on the list
-            NumElements = 0;
-            for (int i = 0; i < Values.Length; i++)
-            {
-                NumElements++;
-            }
             return NumElements;
         }
 
         public void Remove(int index)
         {
             //TODO #5: remove the element on the index-th position. Do nothing if position is out of bounds
-            if (index >= 0 && index < Count() - 1)
+            if (index >= 0 && index < Values.Length - 1)
             {
-                for (int i = index; i < Count() - 1; i++)
+                for (int i = index; i < Values.Length - 1; i++)
                 {
                     Values[i] = Values[i + 1];
                 }
             }
-            return;
+            NumElements--;
         }
 
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
-            for (int i = 0; i < Count(); i++)
-            {
-                Values[i] = default (T);
-            }
+            NumElements = 0;
         }
     }
 }

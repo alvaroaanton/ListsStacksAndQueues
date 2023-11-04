@@ -19,7 +19,6 @@ public class GenericListNode<T>
 public class GenericList<T> : IGenericList<T>
 {
     GenericListNode<T> First = null;
-    private int numElementos;
     public string AsString()
     {
       GenericListNode<T> node = First;
@@ -38,15 +37,22 @@ public class GenericList<T> : IGenericList<T>
     public void Add(T value)
     {
         //TODO #1: add a new element to the end of the list
-        GenericListNode<T> node = First;
-        if (node != null)
+
+        GenericListNode<T> newNode = new GenericListNode<T>(value);
+
+        if (First != null)
         {
+            GenericListNode<T> node = First;
             while (node.Next != null)
             {
                 node = node.Next;
 
             }
-            node.Next.Value = value;
+            node.Next = newNode;
+        }
+        else
+        {
+            First = newNode;
         }
     }
 
@@ -88,7 +94,7 @@ public class GenericList<T> : IGenericList<T>
     {
         //TODO #4: return the number of elements on the list
         GenericListNode<T> node = First;
-        numElementos = 0;
+        int numElementos = 0;
 
         while (node != null)
         {
@@ -127,9 +133,9 @@ public class GenericList<T> : IGenericList<T>
         GenericListNode<T> node = First;
         //TODO #6: remove all the elements on the list
         
-        if (node != null)
+        if (First != null)
         {
-            node.Next = null;
+            First = null;
         }
     }
 }

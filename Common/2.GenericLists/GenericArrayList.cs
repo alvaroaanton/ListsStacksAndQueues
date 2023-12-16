@@ -65,7 +65,7 @@ namespace Common
             }
             NumElements--;
         }
-
+        /*
         public void Clear()
         {
             //TODO #6: remove all the elements on the list
